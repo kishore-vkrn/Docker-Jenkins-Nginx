@@ -1,4 +1,5 @@
 FROM java:latest
+MAINTAINER Kishore
 
 ADD http://dl.bintray.com/rundeck/rundeck-maven/rundeck-launcher-2.6.4.jar /opt/
 
