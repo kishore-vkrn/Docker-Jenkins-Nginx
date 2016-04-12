@@ -1,4 +1,6 @@
-FROM java:latest
+FROM java:openjdk-8u45-jdk
+
+MAINTAINER David Gageot <david.gageot@sonarsource.com>
 
 ENV SONARQUBE_HOME /opt/sonarqube
 
@@ -24,8 +26,8 @@ RUN gpg --keyserver ha.pool.sks-keyservers.net --recv-keys F1182E81C792928921DBC
 
 RUN set -x \
 	&& cd /opt \
-	&& curl -o  --insecure sonarqube.zip -fSL https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-$SONAR_VERSION.zip \
-	&& curl -o  --insecure sonarqube.zip.asc -fSL https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-$SONAR_VERSION.zip.asc \
+	&& curl -o sonarqube.zip -fSL https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-$SONAR_VERSION.zip \
+	&& curl -o sonarqube.zip.asc -fSL https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-$SONAR_VERSION.zip.asc \
 	&& gpg --batch --verify sonarqube.zip.asc sonarqube.zip \
 	&& unzip sonarqube.zip \
 	&& mv sonarqube-$SONAR_VERSION sonarqube \
