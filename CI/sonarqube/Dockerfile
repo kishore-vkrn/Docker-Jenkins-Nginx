@@ -1,6 +1,5 @@
 FROM java:openjdk-8u45-jdk
-
-MAINTAINER David Gageot <david.gageot@sonarsource.com>
+MAINTAINER Kishore 
 
 ENV SONARQUBE_HOME /opt/sonarqube
 
@@ -38,4 +37,5 @@ VOLUME ["$SONARQUBE_HOME/data", "$SONARQUBE_HOME/extensions"]
 
 WORKDIR $SONARQUBE_HOME
 COPY run.sh $SONARQUBE_HOME/bin/
+RUN chmod 777 ./bin/run.sh
 ENTRYPOINT ["./bin/run.sh"]
