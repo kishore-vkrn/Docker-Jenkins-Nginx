@@ -1,12 +1,19 @@
 jenkins_master:
  build: ./jenkins_master
  container_name: jenkins_master
+ ports:
+    - '8080:8080'
 
 sonarqube:
  build: ./sonarqube
  container_name: sonarqube
-
+ ports:
+    - '9000:9000'
+    - '9092:9092'
 rundeck:
   build: ./rundeck
   container_name: rundeck
+  ports:
+    - '4440:4440'
+    - '4443:4443'
 
