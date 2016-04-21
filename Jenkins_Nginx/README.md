@@ -23,10 +23,10 @@ Customized Jenkins configurations
 * Default configurations of Slave nodes in docker plugin _ [make sure to change the host name]_
 
 **Directions to Use**
-Prerequisite: Make sure that that Docker, Docker-compose has been installed and the docker API has been enabled.
+Prerequisite: Make sure that that Docker, Docker-compose has been installed and the docker API has been enabled to listen on 4243. Then type
 
 `docker-compose up`
 
-### jenkins_master - contains the dockerfile for Jenkins Master. The JAVA_OPTS & JENKINS_OPTS variables can be defined so as to start the container with required configurations 
+jenkins_master - contains the dockerfile for Jenkins Master. The JAVA_OPTS & JENKINS_OPTS variables can be defined so as to start the container with required configurations 
 
-### jenkins_nginx - load balancer for the jenkins master and on-demand jenkins slave 
+jenkins_nginx - load balancer for the jenkins master and on-demand jenkins slave 
