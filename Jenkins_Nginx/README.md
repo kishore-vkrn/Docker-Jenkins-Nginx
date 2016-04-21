@@ -26,7 +26,7 @@ Dcokerfile for Jenkins image with
 #### Directions to Use
 **Prerequisite**: Make sure that that Docker, Docker-compose has been installed and the docker API has been enabled to listen on 4243. Then type
 
-`docker-compose up`
+#### `docker-compose up`
 
 jenkins_master - contains the dockerfile for Jenkins Master. The JAVA_OPTS & JENKINS_OPTS variables can be defined so as to start the container with required configurations 
 
