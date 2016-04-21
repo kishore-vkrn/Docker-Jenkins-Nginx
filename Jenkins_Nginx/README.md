@@ -1,15 +1,13 @@
 # Jenkins_Nginx
-***
-A Jenkins master image is built which has 
-> Pre installed tools
 
+A Jenkins master image is built which has 
+Pre installed tools
 * JAVA
 * GIT
 * MAVEN
 * TINI
-***
-> Customized plugins 
 
+Customized plugins 
 * Build-pipeline-plugin
 * GIT plugin
 * Gradle
@@ -18,8 +16,8 @@ A Jenkins master image is built which has
 * Rundeck
 * Nexus
 * Sonar
-***
-> Customized Jenkins configurations 
+
+Customized Jenkins configurations 
 
 * Default username devops / password devops 
 * Default configurations of Slave nodes in docker plugin [make sure to change the host name]
