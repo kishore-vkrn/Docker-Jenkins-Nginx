@@ -1,6 +1,7 @@
 # Jenkins_Nginx
 
-A Jenkins master image is built which has 
+Dcokerfile for Jenkins image with 
+
 #### Pre installed tools
 * JAVA
 * GIT
