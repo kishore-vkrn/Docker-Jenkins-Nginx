@@ -2,7 +2,7 @@
 ***
 A Jenkins master image is built which has 
 > Pre installed tools
-1. JAVA
+* JAVA
 1. GIT
 1. MAVEN
 1. TINI
