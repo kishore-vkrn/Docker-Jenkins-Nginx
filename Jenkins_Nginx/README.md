@@ -1,13 +1,13 @@
 # Jenkins_Nginx
 
 A Jenkins master image is built which has 
-Pre installed tools
+#### Pre installed tools
 * JAVA
 * GIT
 * MAVEN
 * TINI
 
-Customized plugins 
+#### Customized plugins 
 * Build-pipeline-plugin
 * GIT plugin
 * Gradle
@@ -17,13 +17,13 @@ Customized plugins
 * Nexus
 * Sonar
 
-Customized Jenkins configurations 
+#### Customized Jenkins configurations 
 
 * Default username devops / password devops 
 * Default configurations of Slave nodes in docker plugin _ [make sure to change the host name]_
 
-**Directions to Use**
-Prerequisite: Make sure that that Docker, Docker-compose has been installed and the docker API has been enabled to listen on 4243. Then type
+#### Directions to Use
+**Prerequisite**: Make sure that that Docker, Docker-compose has been installed and the docker API has been enabled to listen on 4243. Then type
 
 `docker-compose up`
 
