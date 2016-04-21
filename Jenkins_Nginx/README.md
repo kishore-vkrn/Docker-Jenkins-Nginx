@@ -1,5 +1,7 @@
 # Dockerize Jenkins
 
+![](https://raw.githubusercontent.com/sinohore/temp/master/Capture.PNG)
+
 Dcokerfile for Jenkins image with 
 
 #### Pre installed tools
