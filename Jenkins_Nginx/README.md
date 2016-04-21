@@ -1,4 +1,4 @@
-# Jenkins_Nginx
+# Dockerize Jenkins
 
 Dcokerfile for Jenkins image with 
 
