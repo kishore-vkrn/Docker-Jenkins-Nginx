@@ -65,9 +65,10 @@ COPY jenkins.sh /usr/local/bin/jenkins.sh
 RUN chmod +x /usr/local/bin/jenkins.sh
 
 # Adding config.xml and user "devops" with password "devops"
-ADD https://raw.githubusercontent.com/sinohore/temp/master/config.xml $JENKINS_HOME/config.xml
+ADD https://raw.githubusercontent.com/sinohore/Docker/master/Jenkins_Nginx/config.xml $JENKINS_HOME/config.xml
+ADD https://raw.githubusercontent.com/sinohore/Docker/master/Jenkins_Nginx/credentials.xml $JENKINS_HOME/credentials.xml
 RUN mkdir -p $JENKINS_HOME/users/devops
-ADD https://raw.githubusercontent.com/sinohore/temp/master/users/devops/config.xml $JENKINS_HOME/users/devops/config.xml
+ADD https://raw.githubusercontent.com/sinohore/Docker/master/Jenkins_Nginx/users/devops/config.xml $JENKINS_HOME/users/devops/config.xml
 
 ADD $JENKINS_PLUGINS_REMOTE/copyartifact/1.37/copyartifact.hpi                      $JENKINS_PLUGINS_LOCAL/copyartifact.hpi
 ADD $JENKINS_PLUGINS_REMOTE/promoted-builds/2.24.1/promoted-builds.hpi              $JENKINS_PLUGINS_LOCAL/promoted-builds.hpi
