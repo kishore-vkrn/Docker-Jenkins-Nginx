@@ -6,7 +6,7 @@ EXPOSE 8080
 EXPOSE 50000
 
 # Update & Install common packages
-RUN apt-get update && apt-get install -y wget git curl zip && apt-get install -y software-properties-common
+RUN apt-get update && apt-get install -y wget git curl zip net-tools software-properties-common
 
 # Install a basic SSH server
 RUN apt-get install -y openssh-server
@@ -72,6 +72,11 @@ ENV COPY_REFERENCE_FILE_LOG $JENKINS_HOME/copy_reference_file.log
 ENV JAVA_OPTS="-Xmx8192m"
 ENV JENKINS_OPTS="--handlerCountStartup=100 --handlerCountMax=300  --webroot=/var/cache/jenkins/war"
 
+# SWARM SETUP
+ENV JENKINS_SWARM_VERSION 2.0
+ENV HOME /home/jenkins-slave
+
+# Initializations
 RUN mkdir -p /usr/share/jenkins/ref/
 RUN mkdir -p $JENKINS_HOME
 RUN mkdir -p $JENKINS_PLUGINS_LOCAL
@@ -121,6 +126,17 @@ ENV COPY_REFERENCE_FILE_LOG $JENKINS_HOME/copy_reference_file.log
 #ADD $JENKINS_PLUGINS_REMOTE/sonar/2.3/sonar.hpi                                     $JENKINS_PLUGINS_LOCAL/sonar.hpi
 
 # Tini as the entry point to manage zombie processes
-ENTRYPOINT ["/bin/tini", "--", "/usr/local/bin/jenkins.sh"]
+#ENTRYPOINT ["/bin/tini", "--", "/usr/local/bin/jenkins.sh"]
 
 RUN /usr/local/bin/plugins.sh /usr/share/jenkins/plugins.txt
+
+RUN useradd -c "Jenkins Slave user" -d $HOME -m jenkins-slave
+RUN curl --create-dirs -sSLo /usr/share/jenkins/swarm-client-$JENKINS_SWARM_VERSION-jar-with-dependencies.jar http://maven.jenkins-ci.org/content/repositories/releases/org/jenkins-ci/plugins/swarm-client/$JENKINS_SWARM_VERSION/swarm-client-$JENKINS_SWARM_VERSION-jar-with-dependencies.jar \
+  && chmod 755 /usr/share/jenkins
+
+COPY jenkins-slave.sh /usr/local/bin/jenkins-slave.sh
+
+USER jenkins-slave
+VOLUME /home/jenkins-slave
+
+ENTRYPOINT ["/usr/local/bin/jenkins-slave.sh"]
